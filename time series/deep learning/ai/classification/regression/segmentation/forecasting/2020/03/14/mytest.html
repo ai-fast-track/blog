@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Time Series Classification Using Deep Learning - Part 1 | AI Fast Track Blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Time Series Classification Using Deep Learning - Part 1" />
+<meta name="author" content="Farid Hassainia, PhD" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A soft introduction to time series classification using state of the art neural network architecture." />
+<meta property="og:description" content="A soft introduction to time series classification using state of the art neural network architecture." />
+<link rel="canonical" href="https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html" />
+<meta property="og:url" content="https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html" />
+<meta property="og:site_name" content="AI Fast Track Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Farid Hassainia, PhD"},"description":"A soft introduction to time series classification using state of the art neural network architecture.","headline":"Time Series Classification Using Deep Learning - Part 1","dateModified":"2020-03-14T00:00:00-05:00","datePublished":"2020-03-14T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html"},"url":"https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://ai-fast-track.github.io/blog/feed.xml" title="AI Fast Track Blog" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Time Series Classification Using Deep Learning - Part 1 | AI Fast Track Blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Time Series Classification Using Deep Learning - Part 1" />
+<meta name="author" content="Farid Hassainia, PhD" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A soft introduction to time series classification using state of the art neural network architecture." />
+<meta property="og:description" content="A soft introduction to time series classification using state of the art neural network architecture." />
+<link rel="canonical" href="https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html" />
+<meta property="og:url" content="https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html" />
+<meta property="og:site_name" content="AI Fast Track Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-14T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Farid Hassainia, PhD"},"description":"A soft introduction to time series classification using state of the art neural network architecture.","headline":"Time Series Classification Using Deep Learning - Part 1","dateModified":"2020-03-14T00:00:00-05:00","datePublished":"2020-03-14T00:00:00-05:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html"},"url":"https://ai-fast-track.github.io/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://ai-fast-track.github.io/blog/feed.xml" title="AI Fast Track Blog" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">AI Fast Track Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Time Series Classification Using Deep Learning - Part 1</h1><p class="page-description">A soft introduction to time series classification using state of the art neural network architecture.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-14T00:00:00-05:00" itemprop="datePublished">
+        Mar 14, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Farid Hassainia, PhD</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      11 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#time series">time series</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#deep learning">deep learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#AI">AI</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#classification">classification</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#regression">regression</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#segmentation">segmentation</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#forecasting">forecasting</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/ai-fast-track/blog/tree/master/_notebooks/2020-03-14-mytest.ipynb" role="button">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div><div class="px-2">
+    <a href="https://colab.research.google.com/github/ai-fast-track/blog/blob/master/_notebooks/2020-03-14-mytest.ipynb">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Introduction">Introduction </a></li>
+<li class="toc-entry toc-h2"><a href="#Audience">Audience </a></li>
+<li class="toc-entry toc-h2"><a href="#What-is-in-this-series-of-articles?">What is in this series of articles? </a></li>
+<li class="toc-entry toc-h2"><a href="#What-is-a-time-series?">What is a time series? </a></li>
+<li class="toc-entry toc-h2"><a href="#The-fastai-way">The fastai way </a></li>
+<li class="toc-entry toc-h1"><a href="#Example">Example </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#What-is-the-goal-of-the-time-series-classification?">What is the goal of the time series classification? </a></li>
+<li class="toc-entry toc-h2"><a href="#Downloading-data">Downloading data </a></li>
+<li class="toc-entry toc-h2"><a href="#Using-Datasets-class">Using Datasets class </a></li>
+<li class="toc-entry toc-h2"><a href="#Creating-a-Dataloaders-object">Creating a Dataloaders object </a></li>
+<li class="toc-entry toc-h2"><a href="#Training-a-Model">Training a Model </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Create-the-InceptioTime-model">Create the InceptioTime model </a></li>
+<li class="toc-entry toc-h3"><a href="#Creating-a-Learner-object">Creating a Learner object </a></li>
+<li class="toc-entry toc-h3"><a href="#Finding-optimal-leaninig-rate">Finding optimal leaninig rate </a></li>
+<li class="toc-entry toc-h3"><a href="#Training-model">Training model </a></li>
+<li class="toc-entry toc-h3"><a href="#Ploting-the-loss-function">Ploting the loss function </a></li>
+<li class="toc-entry toc-h3"><a href="#Showing-the-results">Showing the results </a></li>
+<li class="toc-entry toc-h3"><a href="#Showing-the-confusion-matrix">Showing the confusion matrix </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Appendix-A:-Installation">Appendix A: Installation </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+<li class="toc-entry toc-h2"><a href="#Appendix-B:-Existing-packages">Appendix B: Existing packages </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-03-14-mytest.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">
+<a class="anchor" href="#Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction<a class="anchor-link" href="#Introduction"> </a>
+</h2>
+<p>Unlike Computer Vision (CV), Time Series (TS) analysis is not the hottest topic, in the AI / Deep Learning world. Lately, CV starts to lose a bit of its luster because of the amount of controversies around facial detection abusive applications among other reasons. Meanwhile, one may hope that innovation in time series analysis will get more attention and more traction. Compared to both CV and NLP, there are not a lot of publications in time series analysis using Deep Learning. This open doors to talented people to stepping in this domain and start innovating and creating new models that are specially designed to time series. Those new models could be inspired by some already established Neural Network models such as ResNet in CV, and LSTM in NLP.</p>
+<p>This brings us to fastai 2 library. The latter has a tremendous advantage in comparison to other DL frameworks by having a unified APIs that already spans several domains such as Vison, NLP, and Tabular. Therefore, it offers a singular opportunity for DL practitioners interested in creating complementary libraries that mimics the already well established fastai2 structure. By doing so, not only, it accelerates the development of new libraries but it also offers a fast learning curve for the users of those new extension libraries: in other word, we are taking advantage of the transfer learning between different modules that constitutes the fastai2 library.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Audience">
+<a class="anchor" href="#Audience" aria-hidden="true"><span class="octicon octicon-link"></span></a>Audience<a class="anchor-link" href="#Audience"> </a>
+</h2>
+<p>This post is the part 1 of a 3-parts series that targets a large eclectic audience spanning from individuals having limited knowledge in deep learning to developers seeking to follow a walk through in developing a fastai2 extension using fastai2, fastcore,and nbdev libraries.</p>
+<p>One of the goals of this series of posts is to break the fear of developing new modules, libraries, pieces of code some may feel starting playing with deep learning code and/or developing interesting things using the new fastai2.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-in-this-series-of-articles?">
+<a class="anchor" href="#What-is-in-this-series-of-articles?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is in this series of articles?<a class="anchor-link" href="#What-is-in-this-series-of-articles?"> </a>
+</h2>
+<p>First, let’s introduce the <code>timeseries</code> package: an unofficial extension for fastai version 2 (fastai2). This package is still under development (github) yet very functional and with a detailed documentation (docs). <code>timeseries</code> package focus on classification and regression tasks.</p>
+<p>The 3-posts series can be presented as follow:</p>
+<ul>
+<li>
+<p>Part 1: it will introduce you to the 1) <code>timeseries</code> package, 2) Data loading, 3) Datasets, 4) DataLoaders, 5) InceptionTime model, and 5) train and validating the model. In part 1, we will learn how to create DataLoaders objects using Datasets classes. Datasets ar considered as mid-level APIs.</p>
+</li>
+<li>
+<p>Part 2: we will create DataLoaders objects using DataBlock objects which are considered as high-level APIs.</p>
+</li>
+<li>
+<p>Part 3: In this part, we will learn how to create TSDataloaders, a class that derives from fastai2 DataLoaders. Its purpose is to abstract the different steps found in using DataBlock class. We will also get deeper in the beast guts by exploring who the <code>timeseries</code> is internally structured.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-a-time-series?">
+<a class="anchor" href="#What-is-a-time-series?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a time series?<a class="anchor-link" href="#What-is-a-time-series?"> </a>
+</h2>
+<p>First, let’s introduce what time series are in order to level the ground for those who are familiar with time series analysis. For those familiar with this subject, they can skip the following part.</p>
+<p>Time series data have a natural temporal ordering. This makes time series analysis distinct from tabular data (Spreadsheet-like data) in which there is no natural ordering of the observations (e.g. explaining people's wages by reference to their respective education levels, where the individuals' data could be entered in any order).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Time series can divided in to 3 categories:</p>
+<ol>
+<li>
+<p>Time Series Classsification (TSC) : We present a time serie to a Neural Network (NN) model and the latter predicts its label (class). In this tutorial will be focused on this category</p>
+</li>
+<li>
+<p>Time Series Regression (TSR) : This is quiet similar to TSC and share the same data processing. It can be considered as specila case where the number of labels (classes) is reduced to 1, and represented by a float instead of a category. If it is confusing, rest assured we all had the same feeling at a given time of our learning journey. Every bit of information will become more clear as we advance in these tutorials: so hang on and we will reach our destination in a short time.</p>
+</li>
+</ol>
+<ol>
+<li>
+<p>Time series Annotation: 
+It includes anomaly detection, segmentation</p>
+</li>
+<li>
+<p>Time series Forecasting:</p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-fastai-way">
+<a class="anchor" href="#The-fastai-way" aria-hidden="true"><span class="octicon octicon-link"></span></a>The fastai way<a class="anchor-link" href="#The-fastai-way"> </a>
+</h2>
+<p>Following a long fastai tradition, I will show how we can train an NN model and reach a 98,6% accuracy in less than 20 epochs of a time series classification of one of the datasets used to benchmark different NN models. This high accuracy was considered as a state-of-the-art (SOTA) result just a couple of month ago. It is worthwhile to stress out that this result has been achieved by writing 4 lines of code:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">unzip_data</span><span class="p">(</span><span class="n">URLs_TS</span><span class="o">.</span><span class="n">NATOPS</span><span class="p">)</span>
+<span class="n">dls</span> <span class="o">=</span> <span class="n">TSDataLoaders</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">bs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">fnames</span><span class="o">=</span><span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="s1">'NATOPS_TRAIN.arff'</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">'NATOPS_TEST.arff'</span><span class="p">],</span> <span class="n">batch_tfms</span><span class="o">=</span><span class="p">[</span><span class="n">Normalize</span><span class="p">()])</span> 
+<span class="n">learn</span> <span class="o">=</span> <span class="n">ts_learner</span><span class="p">(</span><span class="n">dls</span><span class="p">)</span>
+<span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">lr_max</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you find it is too much magic for you, I woul agree with you if this the only way that we offer to train a model. Far from that, thanks to fastai2 APIs, a practitioner is able to decide what level (of magic) of the APIs to would like to operate at. It means they can use TfmLists, Datasets, DataBlock, and customized DataLoaders. If this is very cryptic for you, that is quite normal. Going through this series of blog posts, you will be grasp the underlying foundation of the APIs and become aquatinted with those concepts. So, hang on and your efforts will be rewarded very soon.</p>
+<p>First, let’s decipher the code above line by line:</p>
+<ol>
+<li>
+<p>In line 1, we are downloading a dataset (NATOPS dataset precisely) that is hosted at by <a href="http://www.timeseriesclassification.com/">http://www.timeseriesclassification.com/</a> website (a Time Series Classification Repository), unzip the dataset, and save it a separate folder under the local ./fastai/data folder. In the case of NATOPS, we have 360 samples (It is small by the big data standard but we are using for testing purposes)</p>
+</li>
+<li>
+<p>In line 2, There is a lot of action there that can be summarized as follow:</p>
+</li>
+</ol>
+<ul>
+<li>Create a 2 Dataset object containing a train dataset (288 samples), and a valid dataset (112 samples)</li>
+<li>Create 2 DataLoader objects that allows us to create mini batches for each type of datasets. A batch is just a sample number of samples (e.g. 32 samples)</li>
+</ul>
+<ol>
+<li>In line 3, we create a learner where we basically do the following:</li>
+</ol>
+<ul>
+<li>Create an NN model, InceptionTime (ref) in our case. The latter was published in September 2019, and achieved SOTA results. Oh did I tell that the researcher who introduced this new model is a member of the fastai community <a href="https://forums.fast.ai/u/hfawaz/summary">Hassan Fawaz</a>? He also open sourced his Keras implementation. What is also amazing is that one of fastai member <a href="https://forums.fast.ai/u/oguiza/summary">Ignacio Oguiza</a> ported that code to fastai version 1, in record time and also open sourced it with many other NN models.</li>
+<li>Create a Learner using some state-of-the-art as defaults such as the Ranger optimizer</li>
+</ul>
+<ol>
+<li>At line 4, we reach the high where we can train our model using one the fastai secret ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs, and this one of the reasons fastai has the adjective fast in its name, I guess.
+Now, that we known how to achieve a SOTA results using 4 lines, let’s further break down the explanation that I offered you here above. There many to tackle that by choosing which level should we use to explain to a new fastai2 comer how this machinery works. Different people would choose different level. My intuition consists in using the Datasets objects as the starting block. I hope it will transparently reveal you the different steps necessary in building datasets (train and valid), dataloaders in charge of creating the mini-batches that will feed our learner in order to train our NN model. </li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example">
+<a class="anchor" href="#Example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example<a class="anchor-link" href="#Example"> </a>
+</h1>
+<p>In example, presented here below, we a multivariate time series. The data is generated by sensors on the hands, elbows, wrists and thumbs. The data are the x,y,z coordinates for each of the eight locations. For each sensor and each axis, we have a time serie that represent the value of x (or y, or z) during execution time of a command. For instance, channel 3 (ch3) on the graph shows the Hand tip right, X coordinate at different time laps.</p>
+<p><img src="/blog/images/copied_from_nb/images/NATOPS.jpg" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Right arm vs Left arm recordings</strong></p>
+<p><em>#3 represents the 'Not clear' Command (see picture here above)</em></p>
+<p><img src="/blog/images/copied_from_nb/images/ts-right-arm.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-is-the-goal-of-the-time-series-classification?">
+<a class="anchor" href="#What-is-the-goal-of-the-time-series-classification?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is the goal of the time series classification?<a class="anchor-link" href="#What-is-the-goal-of-the-time-series-classification?"> </a>
+</h2>
+<p>Let's we ask our operator to execute the command #4: Spread wings and collect the sensors data (24 channels) and save as sample. We then . Our goal is train our Neural Network model with many examples (in our case, we will see that we 360 samples), and then when we feed our model a sensor data without knowing to which command (fro example #2: All clear) it corresponds, our model will able to predict that this sensor data correspond to the #2: All clear command.</p>
+<p>(of say #4: Spread wings) in order to be able to tell us that</p>
+<p>The goal is to provide our Neural Network model data of 24 channels (for a given sample : co)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Downloading-data">
+<a class="anchor" href="#Downloading-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Downloading data<a class="anchor-link" href="#Downloading-data"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">unzip_data</span><span class="p">(</span><span class="n">URLs_TS</span><span class="o">.</span><span class="n">NATOPS</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As you may noticed, the dataset has been downlaoded, unzipped, and stored in a new folder <code>NATOPS</code> in default fastai data folder in one single line. There are many <code>.arff</code> and <code>.ts</code> files. Both arff and ts are simply txt files that either store individual channel data (like <code>NATOPSDimension12_TRAIN.arff</code> which contain data from the 12 channel called dimension) or all channels (<code>NATOPS_TRAIN.arff</code> which contain all the 24 channels data in same file). Our dataset is split in <code>TRAIN</code> and <code>TEST</code> files.
+</p>
+<div class="flash">
+    <svg class="octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong><code>arff</code> and <code>ts</code> are just ASCII data format used to store timeseries data. <code>ts</code> format is both more compact and contains more metadata. You can open these files in any text editor and explore them 
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Using-Datasets-class">
+<a class="anchor" href="#Using-Datasets-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using <code>Datasets</code> class<a class="anchor-link" href="#Using-Datasets-class"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">tfms</span> <span class="o">=</span> <span class="p">[[</span><span class="n">ItemGetter</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ToTensorTS</span><span class="p">()],</span> <span class="p">[</span><span class="n">ItemGetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Categorize</span><span class="p">()]]</span>
+<span class="c1"># Create a dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">Datasets</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">tfms</span><span class="p">,</span> <span class="n">splits</span><span class="o">=</span><span class="n">splits</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">show_at</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Creating-a-Dataloaders-object">
+<a class="anchor" href="#Creating-a-Dataloaders-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a <code>Dataloaders</code> object<a class="anchor-link" href="#Creating-a-Dataloaders-object"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">bs</span> <span class="o">=</span> <span class="mi">32</span>                            
+<span class="c1"># Normalize at batch time</span>
+<span class="n">tfm_norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">scale_subtype</span> <span class="o">=</span> <span class="s1">'per_sample_per_channel'</span><span class="p">,</span> <span class="n">scale_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="n">dls1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">bs</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span> <span class="n">val_bs</span><span class="o">=</span><span class="n">bs</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">after_batch</span><span class="o">=</span><span class="p">[</span><span class="n">tfm_norm</span><span class="p">])</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dls1</span><span class="o">.</span><span class="n">show_batch</span><span class="p">(</span><span class="n">max_n</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">chs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Training-a-Model">
+<a class="anchor" href="#Training-a-Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training a Model<a class="anchor-link" href="#Training-a-Model"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="c1"># Number of channels</span>
+<span class="n">c_in</span> <span class="o">=</span> <span class="n">get_n_channels</span><span class="p">(</span><span class="n">dls2</span><span class="o">.</span><span class="n">train</span><span class="p">)</span> <span class="c1"># 24 for NATOPS dataset</span>
+<span class="c1"># Number of classes</span>
+<span class="n">c_out</span><span class="o">=</span> <span class="n">dls2</span><span class="o">.</span><span class="n">c</span>  <span class="c1"># 6 for NATOPS dataset</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Create-the-InceptioTime-model">
+<a class="anchor" href="#Create-the-InceptioTime-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create the InceptioTime model<a class="anchor-link" href="#Create-the-InceptioTime-model"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">inception_time</span><span class="p">(</span><span class="n">c_in</span><span class="p">,</span> <span class="n">c_out</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">default_device</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-Learner-object">
+<a class="anchor" href="#Creating-a-Learner-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Learner object<a class="anchor-link" href="#Creating-a-Learner-object"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">dls2</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">opt_func</span><span class="o">=</span><span class="n">Ranger</span><span class="p">,</span> <span class="n">loss_func</span><span class="o">=</span><span class="n">LabelSmoothingCrossEntropy</span><span class="p">(),</span> <span class="n">metrics</span><span class="o">=</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Finding-optimal-leaninig-rate">
+<a class="anchor" href="#Finding-optimal-leaninig-rate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Finding optimal leaninig rate<a class="anchor-link" href="#Finding-optimal-leaninig-rate"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">lr_min</span><span class="p">,</span> <span class="n">lr_steep</span> <span class="o">=</span> <span class="n">learn</span><span class="o">.</span><span class="n">lr_find</span><span class="p">()</span>
+<span class="n">lr_min</span><span class="p">,</span> <span class="n">lr_steep</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training-model">
+<a class="anchor" href="#Training-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training model<a class="anchor-link" href="#Training-model"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">lr_max</span><span class="o">=</span><span class="n">lr_steep</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Ploting-the-loss-function">
+<a class="anchor" href="#Ploting-the-loss-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ploting the loss function<a class="anchor-link" href="#Ploting-the-loss-function"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Showing-the-results">
+<a class="anchor" href="#Showing-the-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Showing the results<a class="anchor-link" href="#Showing-the-results"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">show_results</span><span class="p">(</span><span class="n">max_n</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">chs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Showing-the-confusion-matrix">
+<a class="anchor" href="#Showing-the-confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>Showing the confusion matrix<a class="anchor-link" href="#Showing-the-confusion-matrix"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">interp</span> <span class="o">=</span> <span class="n">ClassificationInterpretation</span><span class="o">.</span><span class="n">from_learner</span><span class="p">(</span><span class="n">learn</span><span class="p">)</span>
+<span class="n">interp</span><span class="o">.</span><span class="n">plot_confusion_matrix</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix-A:-Installation">
+<a class="anchor" href="#Appendix-A:-Installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix A: Installation<a class="anchor-link" href="#Appendix-A:-Installation"> </a>
+</h2>
+<p>One straightfoward and convenient way to install <code>timeseries</code> package is to install the 3 necessary packages from their corresponding github repositories.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="c1"># Install the latest version of fastai shared on github</span>
+<span class="o">!</span>pip install git+https://github.com/fastai/fastai2.git
+
+<span class="c1"># Install the latest version of fastcore shared on github</span>
+<span class="o">!</span>pip install git+https://github.com/fastai/fastcore.git
+
+<span class="c1"># Install the latest version of timeseries shared on github</span>
+<span class="o">!</span>pip install git+https://github.com/ai-fast-track/timeseries.git
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>One can also install the editable version of the 3 packages. Check the <a href="https://ai-fast-track.github.io/timeseries/">documentation</a>
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>I hope this first article convey you into trying the <code>timesries</code> package. If you give it a try and found it interesting/helpful, please let others know it by staring it on github, and share with your friends and colleagues who might be interested in this topic.</p>
+<p>Until the next post, I wish everybody well, and I hope you and your family, friends, loved ones will stay safe from this COVID-19 threat. I hope that something good will come out of this disruptive situation. As a positive outcome, we already have seen how more and more people are reaching out to each others. I hope the fastai community will use this adversity to build something even greater. I can already see this impact in growing online user group with video-conferences which will have a positive impact in sharing and spreading knowledge and ultimately democratizing further AI and Deep Learning.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix-B:-Existing-packages">
+<a class="anchor" href="#Appendix-B:-Existing-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix B: Existing packages<a class="anchor-link" href="#Appendix-B:-Existing-packages"> </a>
+</h2>
+<p><a href="https://github.com/alan-turing-institute/sktime">sktime</a> is a new scikit-learn compatible Python library for time series using machine learning techniques. It provides a uniﬁed interface for several time series learning tasks (univariate / multivariate classification, forecasting).</p>
+<p><a href="https://alan-turing-institute.github.io/sktime/index.html">documentation</a></p>
+<p>It also features a Deep Learning extension called <a href="https://github.com/sktime/sktime-dl">sktime-dl</a>
+sktime-dl is written using Keras. Presently, classification models are based on NN models found in dl-4-tsc. The latter is a library is open sourced by <a href="https://github.com/hfawaz/dl-4-tsc">Hassan Fawaz</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/tree.jpg" alt=""></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="ai-fast-track/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/time%20series/deep%20learning/ai/classification/regression/segmentation/forecasting/2020/03/14/mytest.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Helping to democratize AI and Deep Learning.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/ai-fast-track" title="ai-fast-track"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/ai_fast_track" title="ai_fast_track"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
