@@ -137,11 +137,6 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Downloading-data">Downloading data </a></li>
 <li class="toc-entry toc-h2"><a href="#Using-Datasets-class">Using Datasets class </a></li>
 <li class="toc-entry toc-h2"><a href="#Creating-a-Dataloaders-object">Creating a Dataloaders object </a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h1"><a href="#```python">```python </a></li>
-<li class="toc-entry toc-h1"><a href="#Normalize-at-batch-time">Normalize at batch time </a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#Training-a-Model">Training a Model </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Create-the-InceptioTime-model">Create the InceptioTime model </a></li>
@@ -413,16 +408,10 @@ Now, that we known how to achieve a SOTA results using 4 lines, let’s further 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="```python">
-<a class="anchor" href="#%60%60%60python" aria-hidden="true"><span class="octicon octicon-link"></span></a>```python<a class="anchor-link" href="#%60%60%60python"> </a>
-</h1>
-<p>bs = 32</p>
-<h1 id="Normalize-at-batch-time">
-<a class="anchor" href="#Normalize-at-batch-time" aria-hidden="true"><span class="octicon octicon-link"></span></a>Normalize at batch time<a class="anchor-link" href="#Normalize-at-batch-time"> </a>
-</h1>
-<p>tfm_norm = Normalize(scale_subtype = 'per_sample_per_channel', scale_range=(0, 1)) 
-dls1 = ds.dataloaders(bs=bs, val_bs=bs * 2, after_batch=[tfm_norm])
-```</p>
+<div class="highlight"><pre><span></span><span class="n">bs</span> <span class="o">=</span> <span class="mi">32</span>                            
+<span class="n">tfm_norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">scale_subtype</span> <span class="o">=</span> <span class="s1">'per_sample_per_channel'</span><span class="p">,</span> <span class="n">scale_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="n">dls1</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dataloaders</span><span class="p">(</span><span class="n">bs</span><span class="o">=</span><span class="n">bs</span><span class="p">,</span> <span class="n">val_bs</span><span class="o">=</span><span class="n">bs</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">after_batch</span><span class="o">=</span><span class="p">[</span><span class="n">tfm_norm</span><span class="p">])</span>
+</pre></div>
 
 </div>
 </div>
@@ -432,6 +421,14 @@ dls1 = ds.dataloaders(bs=bs, val_bs=bs * 2, after_batch=[tfm_norm])
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="highlight"><pre><span></span><span class="n">dls1</span><span class="o">.</span><span class="n">show_batch</span><span class="p">(</span><span class="n">max_n</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">chs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/show-batch.png" alt=""></p>
 
 </div>
 </div>
@@ -524,8 +521,8 @@ dls1 = ds.dataloaders(bs=bs, val_bs=bs * 2, after_batch=[tfm_norm])
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>python
-learn.fit_one_cycle(30, lr_max=lr_steep)</code>python</p>
+<div class="highlight"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">lr_max</span><span class="o">=</span><span class="n">lr_steep</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
@@ -542,6 +539,14 @@ learn.fit_one_cycle(30, lr_max=lr_steep)</code>python</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/plot-loss.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Showing-the-results">
 <a class="anchor" href="#Showing-the-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Showing the results<a class="anchor-link" href="#Showing-the-results"> </a>
 </h3>
@@ -551,8 +556,16 @@ learn.fit_one_cycle(30, lr_max=lr_steep)</code>python</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>python
-learn.show_results(max_n=9, chs=range(0,12,3))</code>python</p>
+<div class="highlight"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">show_results</span><span class="p">(</span><span class="n">max_n</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">chs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/blog/images/copied_from_nb/images/show-results.png" alt=""></p>
 
 </div>
 </div>
