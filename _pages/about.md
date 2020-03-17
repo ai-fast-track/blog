@@ -4,10 +4,23 @@ title: About Me
 permalink: /about/
 ---
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+Pasionate about AI / Deep Learning and their applications for good. 
+Helping democratizing AI / Deep Learning
+Happy to share all what I learned with all people no matter their background
+Hanging around at the most open and most welcoming deep learning community: [fastai](https://forums.fast.ai/)
+Trying to contribute to fastai community as much as I can: Learning from them and giving back.
+Presently working in developing a [timeseries](https://github.com/ai-fast-track/timeseries/) package for fastai2  
+
+## Background
+- BSc in Physics
+- MSc in Biomedical Engineering
+- PhD in Biomedical Engineering
+- Postdoc in both Biomedical Engineering and Neurosciences
+- Creator of StatMap3D software : Statitical Brain Electrical Mapping Software
+- Creator of DataFinder : Multidisciplinary Clinical and Research Database
+ 
+
 
 This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
-
-
 
 [^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
