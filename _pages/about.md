@@ -8,7 +8,7 @@ permalink: /about/
 - Helping to democratize AI / Deep Learning
 - Happy to share all what I learned with all people no matter their background
 - Hanging around at the most open and most welcoming deep learning community: [fastai](https://forums.fast.ai/)
-- Trying to contribute to fastai community as much as I can: Learning from them and giving back.
+- Trying to contribute to fastai community as much as I can: Learning with them and giving back.
 - Presently working in developing the [timeseries](https://github.com/ai-fast-track/timeseries/) package: a time series analysis package using deep learning for [fastai2](https://github.com/fastai/fastai2) library  
 
 ## Background
