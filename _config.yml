@@ -14,7 +14,7 @@ github_repo: "blog"
 
 # OPTIONAL: override baseurl and url if using a custom domain
 # Note: leave out the trailing / from this value. 
-url: "https://ai-fast-track.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://ai-fast-track.com" # the base hostname & protocol for your site, e.g. http://example.com "https://ai-fast-track.github.io"
 
 ###########################################################
 #########  Special Instructions for baseurl ###############
