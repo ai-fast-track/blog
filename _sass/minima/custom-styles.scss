@@ -10,5 +10,9 @@
     font-size: 16px;
 }
 
+.input_area pre, .input_area div {
+    font-size: 110%;
+}
+
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
