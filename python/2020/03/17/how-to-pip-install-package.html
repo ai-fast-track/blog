@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      10 min read
     
 </span></p>
 
@@ -198,19 +198,7 @@ window.onload = wrap_img;
 </pre></div>
 </li>
 </ol>
-<p>The difference between the 2 options is the use of the <code>!</code> in the case of Jupyter notebook. However, the result is the same, the fastai2 package will be install in the current active environment.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p></p>
-<div class="flash flash-success">
-    <svg class="octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
-    <strong>Tip: </strong>If you use fastai2 (or any established python package), It is considered as good practice to freeze install a package: This means installing a specific version of a package (e.g <code>pip install torch== 1.4.0</code>). 
-</div>
+<p>The difference between the 2 options is the use of the <code>!</code> in the case of Jupyter notebook. However, the result is the same, the fastai2 package will be install in the current active virtual environment.</p>
 
 </div>
 </div>
@@ -221,7 +209,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash flash-warn">
     <svg class="octicon octicon-zap" viewbox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 7H6l3-7-9 9h4l-3 7 9-9z"></path></svg>
-    <strong>Important: </strong>Following the best practices, it is importante to create and activate a virtual environment before installing any python package. Lacking to do so, the package will be installed in your current virtual environment. This means that most likely, it will be installed in the <code>base</code> virtual environment in Ananconda (<code>base</code> is the default virual environment created when you installed Anaconda)
+    <strong>Important: </strong>Following the best practices, it is important to create and activate a virtual environment before installing any python package. Lacking to do so, the package will be installed in your current virtual environment. This means that most likely, it will be installed in the <code>base</code> virtual environment in Ananconda (<code>base</code> is the default virual environment created when you installed Anaconda). Check out the Appenix A here below.
 </div>
 
 </div>
@@ -232,7 +220,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash flash-success">
-    <svg class="octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <svg class="octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
     <strong>Tip: </strong>You can create several virtual environments on the same machine. The following is the output of the different virtual environments that I create on my local machine
 </div>
 
@@ -249,6 +237,7 @@ window.onload = wrap_img;
 <span class="n">base</span>                     <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span>
 <span class="n">fastai2</span>                  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">fastai2</span>
 <span class="n">fastai2_dev</span>           <span class="o">*</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">fastai2_dev</span>
+<span class="n">fastai</span>                   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">fastai</span>
 <span class="n">gluon</span>                    <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">gluon</span>
 <span class="n">prophet</span>                  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">farid</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">prophet</span>
 </pre></div>
@@ -296,11 +285,11 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It displays the package name, version number,  location where it was installed (with the name of the virtual environment: fastai2 is the name in my case), and other information.
+<p>It displays the package name, version number,  location where it was installed (with the name of the virtual environment: fastai2 is the name in my case), and some other information.
 </p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>As of today (March 16th 2020), the fastai version found on the pypi repository is 0.0.11
+    <strong>Note: </strong>At the present time (March 17th, 2020), the fastai version found on the pypi repository is <strong>0.0.11</strong>
 </div>
 
 </div>
@@ -315,7 +304,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>This method is used by users who are interested in new using the latest and the greatest features found the fastai2 Github repository. In general, they are interested in using the latest fastai2 package without the intention to build new modules that can be used as fastai2 extensions. If this sound a bit unclear, rest assured that everything will be crystal clear by the end of reading Method 3.
+    <strong>Note: </strong>This method is used by users who are interested in the latest and the greatest features found in the fastai2 Github repository. In general, those users are interested in using the latest fastai2 package without the intention to build new modules that can be used as fastai2 extensions. If this sound a bit unclear, everything will be crystal clear once you wil have read the Method 3 section.
 </div>
 
 </div>
@@ -324,7 +313,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The second method consists in installing the fastai2 package from the <a href="https://github.com/fastai/fastai2">fastai2 GitHub repository</a>. It begs the question: Why would we be interested in doing so. The answer is simple: If a python package is heavy development and changed in the source coder are introduced on a regular basis, chances are the package found on the pypi repository is lagging behind. In order to use the latest and the greatest version you can just install fastai2 from its GitHub repository.</p>
+<p>The second method consists in installing the fastai2 package from the <a href="https://github.com/fastai/fastai2">fastai2 GitHub repository</a>. This begs the question: Why would we be interested in doing so? The answer is simple: If a python package is under development, and changed in the source code are introduced on a regular basis, chances are the package found on the pypi repository is lagging behind. In order to use the latest fastai2 features you might just install fastai2 from its GitHub repository.</p>
 
 </div>
 </div>
@@ -332,7 +321,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To use a concrete example, at certain moment Jeremy shared a Kaggle kernel in order to show how to use a new developed module called medical. The latter was under development and was not available on the pypi repository. Therefore the solution was to advice the users to install the latest fastai2 version (that includes the medical module) by running the following command either on:</p>
+<p>As illustration of a situation where this option is convenient, I will cite the example where Jeremy shared a Kaggle kernel whose purpose was to show how to use a new developed module called medical. The latter was under development, and was not available on the pypi repository. Therefore the solution was to advice the users to install the latest fastai2 version (that includes the medical module) by running the following command either on:</p>
 <ol>
 <li>
 <p>the terminal:</p>
@@ -352,13 +341,13 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You might have already noticed that we replaced <code>fastai2</code> by <code>git+https://github.com/fastai/fastai2.git</code> which means that you are installing the latest source code found in the fastai2 GitHub repository.
+<p>By comaparing the command above with the one used in method 1, you might have noticed that we replaced <code>fastai2</code> by <code>git+https://github.com/fastai/fastai2.git</code>: this means that we are installing the latest source code found in the fastai2 GitHub repository.
 </p>
 <div class="flash flash-warn">
     <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10 7H6l3-7-9 9h4l-3 7 9-9z"></path></svg>
     <strong>Important: </strong>When using this option, it is very important to also install the <code>fastcore</code> library` using the very same method:
 </div>
-<p>from the command line:</p>
+<p>The command shown, here below, should be sequentially run in order to align the 2 versions:</p>
 <div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fastai</span><span class="o">/</span><span class="n">fastai2</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 <p>and from a Jupyter notebook cell:</p>
@@ -371,7 +360,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You may ask yourself why do we have to also install the fastcore library from GitHub given the fact that fastai2 will always install fastcore because it is part of its requirements. The answer is because fastai2 will install the latest version found in the pypi repository and not the latest version found on GitHub. If the fastai github version is using the new capabilities found in the fastcore latest GitHub version. This will lead to an incompatibility if you are using fastai latest GitHub version mixed with the fastcore pypi version, you will end up have some issues and some errors will surface. Therefore, better to have the habit to pip install both of them using the same method (method 2 in this case)</p>
+<p>You may ask yourself why do we have to also install the fastcore library from GitHub given the fact that fastai2 will always install fastcore because it is part of its requirements. The answer relies on fact that fastai2 will install the latest version found in the <strong>pypi repository</strong> as opposed to the latest version found on <strong>GitHub</strong>. If the fastai2 GitHub version is using new features found in the fastcore latest GitHub version, it will lead to an incompatibility should you use fastai latest GitHub version combined with the fastcore pypi version: basically we are mixing 2 unaligned version. Consequently, we will end up experiencing some issues, and some errors will ultimately surface. Therefore, it is better to follow the good practice by pip installing both of them using the method described here above.</p>
 
 </div>
 </div>
@@ -385,7 +374,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>This method is used by developers who are actively building new modules that depends on fastai2. These developers are usually actively adding features to their modules and want to make sure that their source code stay in sync with the fastai2 latest version. Lacking to do so, they will realize that their code is incompatible with fastai2 one.
+    <strong>Note: </strong>This method is used by developers who are actively building new modules that depends on fastai2 new features. Those developers are usually actively adding features to their modules and want to make sure that their source code stay in sync with the fastai2 latest version. Lacking to do so, they will realize that their code is incompatible with fastai2 one, at certain point of time.
 </div>
 
 </div>
@@ -394,7 +383,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal is to keep your library (which depends on fastai2) aligned to the fastai2 one hand, and to avoid to keep pip installing both fastai2 and fastcore every time new version are released (this would have been the case had we used Method 2). There exists a magic method (Method 3) that consists in using a so-called editable version of both fastai2 and fastcore.</p>
+<p>The goal is to keep our library (that depends on fastai2) aligned to the fastai2 one hand, and to avoid to keep pip installing both fastai2 and fastcore every time a new version is released (this would have been the case had we used Method 2). There exists a magic method (Method 3) that consists in using a so-called an editable version of the target python package (i.e. fastai2 and fastcore)</p>
 
 </div>
 </div>
@@ -414,7 +403,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Basically, we are cloning the fastai2 repository, then hopping into the fastai2 folder, finally issuing the command to pip install the package (fastai2) from the current folder (hence the use of the dot <code>.</code>) as an editable version by using the <code>-e</code> switch.</p>
+<p>Basically, we are cloning the fastai2 repository, then hopping into the cloned fastai2 folder, and finally issuing the command to pip install the package (fastai2) from the current folder (hence the use of the dot <strong>.</strong>) as an editable version by using the <strong>-e</strong> switch.</p>
 
 </div>
 </div>
@@ -422,7 +411,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We also to follow the same steps for the fastcore library:</p>
+<p>We also have to follow the same steps for the fastcore library:</p>
 <div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fastai</span><span class="o">/</span><span class="n">fastcore</span>
 <span class="n">cd</span> <span class="n">fastcore</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
@@ -434,12 +423,12 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For those following along and who are familiar with this option, they might notice that there is a discrepancy between this method and the one found on the fastai2 repository:</p>
+<p>For those following along, and who are familiar with this option, they might notice there is a discrepancy between this method and the one found on the fastai2 repository (shown here below):</p>
 <div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fastai</span><span class="o">/</span><span class="n">fastai2</span>
 <span class="n">cd</span> <span class="n">fastai2</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="s2">".[dev]"</span>
 </pre></div>
-<p>Using the <code>[dev]</code> flag issue an order to the installer to pip install all the package listed under the dev requirements (<code>dev_requirements = nbdev</code>). This means the <code>nbdev</code> package (its a fastai package) will be installed from the pypi repository. Given the fact that nbdev is also under heavy development, we may experienced some issues caused by a misalignment between the 3 different fastai pacjkages being fastai2, fastcore, and nbdev. For that reason, it is desirable to also install the nbdev package as an editable package as follow:</p>
+<p>The difference is the [dev] part. Using the <code>[dev]</code> flag issue an order to the installer to pip install all the packages listed under the dev requirements (<code>dev_requirements = nbdev</code>). This means the <code>nbdev</code> package (its a fastai package) will be installed from the pypi repository. Given the fact that nbdev is also under heavy development, we may experienced some issues caused by a misalignment between the 3 different fastai pacjkages being fastai2, fastcore, and nbdev. For that reason, it is desirable to also install the <code>nbdev</code> package as an editable package as follow:</p>
 <div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fastai</span><span class="o">/</span><span class="n">nbdev</span>
 <span class="n">cd</span> <span class="n">nbdev</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
@@ -451,7 +440,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now that we installed our editable package, how are we going to update it. The answer is very straightforward, we pull our latest version from the corresponding GitHub repository. Therefore, for the fastai2 package, we just have to hop to the forder where we clone the original repo, and  we run the following command:</p>
+<p>Now that we installed our editable package, how are we going to update it? The answer is very simple: we git pull our latest version from the corresponding GitHub repository. Therefore, for the fastai2 package, we just have to hop into its cloned forder and run the following command:</p>
 <div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 </pre></div>
 <p>This command will both update our repo and update our editable package has the version changed. We have to run the command, here above, for both fastai2 and fastcore.</p>
@@ -489,13 +478,25 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash flash-error">
+    <svg class="octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg>
+    <strong>Warning: </strong>Please replace the <code>Anaconda3-2019.10-Linux-x86_64.sh</code> by more recent filename found the [Anaconda installer archive]  (<a href="https://repo.continuum.io/archive/">https://repo.continuum.io/archive/</a>) .
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="On-Windows">
 <a class="anchor" href="#On-Windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>On Windows<a class="anchor-link" href="#On-Windows"> </a>
 </h3>
 <ul>
-<li>Download Anaconda Windows installer <a href="https://www.anaconda.com/distribution/#download-section">here</a> </li>
+<li>Download the <a href="https://www.anaconda.com/distribution/#download-section">Anaconda Windows installer</a> </li>
 <li>Select Python 3.6 or higher </li>
-<li>Run the installer and follow the instructions</li>
+<li>Run the installer, and follow the instructions</li>
 </ul>
 
 </div>
@@ -526,8 +527,8 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
 <div class="flash flash-success">
-    <svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
-    <strong>Tip: </strong>You can choose with version of python you would like to install. In the case above, the version 3.6 will be installed
+    <svg class="octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <strong>Tip: </strong>You can choose which version of python you would like to install. In the case here above, the version 3.6 will be installed
 </div>
 
 </div>
@@ -548,7 +549,7 @@ window.onload = wrap_img;
 <ul>
 <li>Install a python package (e.g. fastai2) from the pypi repository:</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fastai</span>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">fastai2</span>
 </pre></div>
 <ul>
 <li>Uninstall a python package (e.g. fastai2):</li>
@@ -600,17 +601,18 @@ window.onload = wrap_img;
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">fastai2</span>
 </pre></div>
 <ul>
-<li>List all the conda virtual environments</li>
+<li>List all the conda <strong>virtual environments</strong>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
 </pre></div>
 <ul>
-<li>List all the packages installed in the current conda virtual environments</li>
+<li>List all the <strong>packages</strong> installed in the current conda virtual environments</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="nb">list</span>
 </pre></div>
 <ul>
-<li>Install a python package (e.g. torch) from the pypi repository:</li>
+<li>Install a python package (e.g. torch) from the conda repository:</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">torch</span> <span class="o">-</span><span class="n">c</span> <span class="n">torch</span>
 </pre></div>
@@ -621,7 +623,7 @@ window.onload = wrap_img;
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">uninstall</span> <span class="n">torch</span>
 </pre></div>
 <ul>
-<li>List all the packages installed that start with <code>fast</code> in the current conda virtual environments</li>
+<li>List all the packages installed that start with the prefix <code>fast</code> in the current conda virtual environments</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">conda</span> <span class="nb">list</span> <span class="n">fast</span>
 </pre></div>
@@ -643,7 +645,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>You might have noticed that both my fastai2 and fastcore package share the same name of the Build Channel: <strong>dev_0</strong> indicating that they both are editable versions.
+    <strong>Note: </strong>You might have noticed that both my fastai2 and fastcore package share the same name of the Build Channel <strong>dev_0</strong>: it indicates that they both are editable versions.
 </div>
 
 </div>
@@ -655,7 +657,7 @@ window.onload = wrap_img;
 <h2 id="Conclusion">
 <a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
 </h2>
-<p>This is an overview that describes 3 methods to install any released package. In this article, I described the fastai2 library use-case. fastai2 is still under development. I also explained the goal of each of these 3 methods, and how to select which method is more suitable to your specific use-case.</p>
+<p>This is an overview that describes 3 methods to install any released package. In this article, I described the fastai2 library use-case. I also explained the goal of each of these 3 methods, and how to select the method that is more suitable to your specific use-case.</p>
 
 </div>
 </div>
