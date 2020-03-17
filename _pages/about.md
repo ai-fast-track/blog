@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-- Pasionate about AI / Deep Learning knowledge, and their applications for good. 
+- Pasionate about AI / Deep Learning, and their applications for good. 
 - Helping to democratize AI / Deep Learning
 - Happy to share all what I learned with all people no matter their background
 - Hanging around at the most open and most welcoming deep learning community: [fastai](https://forums.fast.ai/)
