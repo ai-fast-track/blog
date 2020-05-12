@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      9 min read
+      10 min read
     
 </span></p>
 
@@ -270,7 +270,7 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>You could run the whole <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/training_using_default_settings.ipynb">training_using_default_settings.ipynb</a> notebook in Google Collab by clicking the link.
+    <strong>Note: </strong>You could run the whole <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/training_using_default_settings.ipynb">training_using_default_settings.ipynb</a> notebook in Google Colab by clicking the link.
 </div>
 
 </div>
@@ -279,15 +279,11 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">unzip_data</span><span class="p">(</span><span class="n">URLs_TS</span><span class="o">.</span><span class="n">NATOPS</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">unzip_data</span><span class="p">(</span><span class="n">URLs_TS</span><span class="o">.</span><span class="n">NATOPS</span><span class="p">)</span>
 <span class="n">dls</span> <span class="o">=</span> <span class="n">TSDataLoaders</span><span class="o">.</span><span class="n">from_files</span><span class="p">(</span><span class="n">bs</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span><span class="n">fnames</span><span class="o">=</span><span class="p">[</span><span class="n">path</span><span class="o">/</span><span class="s1">'NATOPS_TRAIN.arff'</span><span class="p">,</span> <span class="n">path</span><span class="o">/</span><span class="s1">'NATOPS_TEST.arff'</span><span class="p">],</span> <span class="n">batch_tfms</span><span class="o">=</span><span class="p">[</span><span class="n">Normalize</span><span class="p">()])</span> 
 <span class="n">learn</span> <span class="o">=</span> <span class="n">ts_learner</span><span class="p">(</span><span class="n">dls</span><span class="p">)</span>
 <span class="n">learn</span><span class="o">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">lr_max</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span> 
@@ -297,7 +293,6 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -321,6 +316,18 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The package also features Class Activation Map (CAM) for time series. CAM is used to help interpreting the results of our NN model decision. The package offers both CAM and GRAD-CAM as well as user-defined CAM.  The <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/cam_tutorial_ECG200.ipynb">cam_tutorial_ECG200.ipynb</a> notebook illustrates a simple example of the univariate ECG200 dataset classification task (Normal Heartbeat vs. Myocardial Infarction). Like in vision, the colors represent the activation values at a given layer (in this example it is located before the FC layer (last layer)). Notice how the Myocardial Infarction plots (2nd, 3rd, and 4th) share similar activation zones that are quite different from those corresponding to Normal Heartbeat plots (1st and 5th). This kind of representation eases the interpretation of the results obtained using a given NN model (InceptionTime, in this case).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <strong>Note: </strong>You can also run the The <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/cam_tutorial_ECG200.ipynb">cam_tutorial_ECG200.ipynb</a> notebook in Google Colab by clicking the link.
+</div>
 
 </div>
 </div>
@@ -389,7 +396,7 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <p>I also intend to post on Twitter, on regular basis, Tips &amp; Tricks about fastai(2) and Deep Learning in general. Stay Tuned, and Stay Safe!
 </p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>I wanted to end this article by saying that I was immune to "unfollowers" because I haven’t any follower yet. To my big surprise, I discovered that I already had one follower: @jcatanz, before even starting tweeting. Thank you so much Joseph for being my first follower! Hopefully, other fastai members will do the same!
 </div>
 
