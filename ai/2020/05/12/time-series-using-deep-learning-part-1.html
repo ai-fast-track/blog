@@ -363,10 +363,14 @@ Conv2D       &lt;---&gt; Conv1D</p>
 <ol>
 <li>
 <p><strong>Line 1: Downloading Data</strong></p>
+
+<pre><code> path = unzip_data(URLs_TS.NATOPS)</code></pre>
 <p>Downloading a dataset (NATOPS dataset precisely) hosted at the <a href="http://www.timeseriesclassification.com/">Time Series Classification Repository website</a>, unzipping the dataset, and saving it a separate folder under the local ./fastai/data folder.</p>
 </li>
 <li>
 <p><strong>Line 2: Creating Datasets and DataLoaders Objects</strong></p>
+
+<pre><code> dls = TSDataLoaders.from_files(bs=32,fnames=[path/'NATOPS_TRAIN.arff', path/'NATOPS_TEST.arff'], batch_tfms=[Normalize()])</code></pre>
 <ul>
 <li>
 <p>Creating a 2 Dataset objects containing a train dataset, and a valid dataset.</p>
@@ -378,6 +382,8 @@ Conv2D       &lt;---&gt; Conv1D</p>
 </li>
 <li>
 <p><strong>Line 3: Creating a Learner Object</strong></p>
+
+<pre><code> learn = ts_learner(dls)</code></pre>
 <p>We create a learner where we basically do the following:</p>
 <ul>
 <li>
@@ -390,6 +396,8 @@ Conv2D       &lt;---&gt; Conv1D</p>
 </li>
 <li>
 <p><strong>Line 4: Training Model</strong></p>
+
+<pre><code> learn.fit_one_cycle(25, lr_max=1e-3)</code></pre>
 <p>We train our model using one the fastai magic ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs.</p>
 </li>
 </ol>
