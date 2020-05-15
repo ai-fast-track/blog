@@ -362,15 +362,19 @@ Conv2D       &lt;---&gt; Conv1D</p>
 <p>let’s decipher, line by line, the 4 lines of code shown here above:</p>
 <ol>
 <li>
-<p><strong>Line 1: Downloading Data</strong></p>
+<p><strong>Line 1: Downloading Data</strong>
+ &lt;div class= highlight hl-ipython3&gt;</p>
 
-<pre><code> path = unzip_data(URLs_TS.NATOPS)</code></pre>
-<p>Downloading a dataset (NATOPS dataset precisely) hosted at the <a href="http://www.timeseriesclassification.com/">Time Series Classification Repository website</a>, unzipping the dataset, and saving it a separate folder under the local ./fastai/data folder.</p>
+<pre><code> path = unzip_data(URLs_TS.NATOPS)
+</code></pre>
+<p>&lt;/div&gt;
+ Downloading a dataset (NATOPS dataset precisely) hosted at the <a href="http://www.timeseriesclassification.com/">Time Series Classification Repository website</a>, unzipping the dataset, and saving it a separate folder under the local ./fastai/data folder.</p>
 </li>
 <li>
-<p><strong>Line 2: Creating Datasets and DataLoaders Objects</strong></p>
-
-<pre><code> dls = TSDataLoaders.from_files(bs=32,fnames=[path/'NATOPS_TRAIN.arff', path/'NATOPS_TEST.arff'], batch_tfms=[Normalize()])</code></pre>
+<p><strong>Line 2: Creating Datasets and DataLoaders Objects</strong> 
+ &lt;div class= highlight hl-ipython3&gt;
+ dls = TSDataLoaders.from_files(bs=32,fnames=[path/'NATOPS_TRAIN.arff', path/'NATOPS_TEST.arff'], batch_tfms=[Normalize()]) 
+ &lt;/div&gt;</p>
 <ul>
 <li>
 <p>Creating a 2 Dataset objects containing a train dataset, and a valid dataset.</p>
@@ -381,10 +385,11 @@ Conv2D       &lt;---&gt; Conv1D</p>
 </ul>
 </li>
 <li>
-<p><strong>Line 3: Creating a Learner Object</strong></p>
-
-<pre><code> learn = ts_learner(dls)</code></pre>
-<p>We create a learner where we basically do the following:</p>
+<p><strong>Line 3: Creating a Learner Object</strong>
+ &lt;div class= highlight hl-ipython3&gt;
+ learn = ts_learner(dls)
+ &lt;/div&gt;
+ We create a learner where we basically do the following:</p>
 <ul>
 <li>
 <p>Create an NN model, InceptionTime in our case.</p>
@@ -395,10 +400,11 @@ Conv2D       &lt;---&gt; Conv1D</p>
 </ul>
 </li>
 <li>
-<p><strong>Line 4: Training Model</strong></p>
-
-<pre><code> learn.fit_one_cycle(25, lr_max=1e-3)</code></pre>
-<p>We train our model using one the fastai magic ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs.</p>
+<p><strong>Line 4: Training Model</strong>
+ &lt;div class= highlight hl-ipython3&gt;
+ learn.fit_one_cycle(25, lr_max=1e-3) 
+ &lt;/div&gt;
+ We train our model using one the fastai magic ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs.</p>
 </li>
 </ol>
 <p>Admittedly, the 4 lines shown here above can be a bit cryptic for someone how is new to the fastai2 library. Those lines show how to train a model using the fastai2 high level API. At that level, many settings are set by default in order to avoid overwhelming new users by exposing too many parameters that are difficult to grasp at the beginning of their learning journey. As shown here above, using fastai2 default settings we are very often capable of reaching SOTA results in fewer epochs.</p>
