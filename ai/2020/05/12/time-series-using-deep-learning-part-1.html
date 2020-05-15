@@ -145,7 +145,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this article, I will introduce you to a new package called <a href="https://github.com/ai-fast-track/timeseries">timeseries</a>  for <a href="https://github.com/fastai/fastai2">fastai2</a> that I lately developed. The timeseries package allows you to train a Neural Network (NN) model in order to classify both univariate and multivariate time series using the powerful fastai2 library and achieve a State Of The Art (SOTA) results.</p>
+<p>In this article, I will introduce you to a new package called <a href="https://github.com/ai-fast-track/timeseries">timeseries</a>  for <a href="https://github.com/fastai/fastai2">fastai2</a> that I lately developed. The timeseries package allows you to train a Neural Network (NN) model in order to classify both univariate and multivariate time series using the powerful fastai2 library and achieve State Of The Art (SOTA) results.</p>
 
 </div>
 </div>
@@ -183,7 +183,7 @@ window.onload = wrap_img;
 <p>Compared to both CV and Natural Language Processing (NLP), TS is still in its infancy in terms of DL innovations. This offers the opportunity to talented people to step in this domain and to start innovating and creating new models that are specifically designed to time series. Those new models could be built from the ground or inspired by some well established NN models such as ResNet in CV, and LSTM in NLP.</p>
 <p>fastai2 could play a significant role in developing this field thanks to its unified APIs that already spans several domains such as Vison, NLP, and Tabular, on one hand, and to its level of granularity in terms of APIs depth (High, Mid, and Low Levels APIs), on the other hand.</p>
 <p>By using fastai2, not only, this will accelerate the development of new libraries but it will also offer a fast learning curve for users exploring those new TS libraries: in other word, we can leverage the transfer learning between different modules that constitutes the fastai2 library.</p>
-<p>Before diving in the core subject, let's define what is a time series.</p>
+<p>Before diving in the core subject, let's define what a time series is.</p>
 
 </div>
 </div>
@@ -228,7 +228,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong><strong>AIoT and AI in Edgepoint</strong><br><br>Many big companies and startups are heavily investing in developing both AI-enabled processors and micro-controllers for AI in edgepoint Applications.<br><br>Nowadays, the edge AI portion of a smartphone System-on-Chip (SoC) represents only about 5% of the total area and about US$3.50 of the total cost, and would use about 95% less power than the whole SoC does. This stressed out how affordable the AI chips already are.<br><br>The wide spread of both AI chips and artificial intelligence of things (AIoT) will make NN model training and/or inference at edgepoints a reality. AI inference on the edgepoint device is very attractive because it increases latency, saves bandwidth, helps privacy, and saves power associated with RF transmission of data to the cloud.<br><br>Furthermore, the ability to collect, interpret, and immediately act on vast amounts of data is critical for many of the data-heavy applications.<br><br>As a consequence, this will likely drive significant changes for consumers and enterprises applications. Smart machines powered by AI chips will have a huge impact on a wide variety of industries such as manufacturing, logistics, agriculture, energy, etc.<br><br>TS processing using AI/DL techniques could play a key role in implementing AI on edgepoint given the fact that TS uses far less resources such as memory and compute.
+    <strong>Note: </strong><strong>AIoT and AI in Edgepoint</strong><br><br>Many big companies and startups are heavily investing in developing both AI-enabled processors and micro-controllers for AI in edgepoint Applications.<br><br>Nowadays, the edge AI portion of a smartphone System-on-Chip (SoC) represents only about 5% of the total area and about US$3.50 of the total cost, and would use about 95% less power than the whole SoC does. This stressed out how affordable the AI chips already are.<br><br>The wide spread of both AI chips and artificial intelligence of things (AIoT) will make NN model training and/or inference at edgepoints a reality. AI inference on the edgepoint device is very attractive because it increases latency, saves bandwidth, helps privacy, and saves power associated with RF transmission of data to the cloud.<br><br>Furthermore, the ability to collect, interpret, and immediately act on vast amounts of data is critical for many of the data-heavy applications.<br><br>As a consequence, this will likely drive significant changes for consumers and enterprises applications. Smart machines powered by AI chips will have a huge impact on a wide variety of industries such as manufacturing, logistics, agriculture, energy, etc.<br><br>TS processing using AI/DL techniques could play a key role in implementing AI on edgepoint given the fact that TS uses far less resources such as memory and compute than both CV and NLP counterparts.
 </div>
 
 </div>
@@ -257,7 +257,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#What-is-the-goal-of-the-NATOPS-time-series-classification?" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is the goal of the NATOPS time series classification?<a class="anchor-link" href="#What-is-the-goal-of-the-NATOPS-time-series-classification?"> </a>
 </h2>
 <p>The NATOPS dataset contains time series recordings corresponding to different commands executed by different operators.</p>
-<p>The goal is to train our NN model using both a training dataset and a valid dataset. After training our model and achieving a high accuracy score, we feed our model a given sensor test data without providing its class (label) (e.g. "4: Spread wings"), and our model will predict which class the sensor data correspond to  (i.e. "4: Spread wings").</p>
+<p>The goal is to train our NN model using both a training dataset and a valid dataset. After training our model and achieving a high accuracy score, we feed our model a given sensor test data without providing its class (label) (e.g. "4: Spread wings"), and our model will predict which class the sensor data correspond to  (hopefully "4: Spread wings").</p>
 
 </div>
 </div>
@@ -269,10 +269,10 @@ window.onload = wrap_img;
 <a class="anchor" href="#End-to-End-Training" aria-hidden="true"><span class="octicon octicon-link"></span></a>End-to-End Training<a class="anchor-link" href="#End-to-End-Training"> </a>
 </h2>
 <p>In this section, I will show how easy to train a NN model, and achieve some SOTA results in a record time. Before doing that, let’s introduce the timeseries package. The latter was designed to mimic the unified fastai v2 APIs used for vision, text, and tabular in order to ease its use among users familiar with the fastai2 APIs. As a consequence, those who already used fastai2 vision module will feel familiar with the timeseries APIs. Timeseries package uses Datasets, DataBlock, and a new TSDataLoaders and a new TensorTS classes. It has the following mapping with fastai2 vision module:</p>
-<p>TensorImage  &lt;---&gt; TensorTS
+<p>TensorImage  &lt;---&gt; TensorTS<br>
 Conv2D       &lt;---&gt; Conv1D</p>
-<p>The timeseries package also references 128 Univariate and 30 Multivariate time series datasets. Using URLs_TS class (similar to fastai URLs class) you might play with one of those 158 datasets.
-Similarly, to fastai vision examples, we can train any time series dataset end-to-end with 4 lines of code. In the example shown, here below, we use TSDataLoaders and a multivariate the NATOPS dataset.</p>
+<p>The timeseries package also references 128 Univariate and 30 Multivariate time series datasets. Using URLs_TS class (similar to fastai URLs class) you might play with one of those 158 datasets.</p>
+<p>Similarly to fastai vision examples, we can train any time series dataset end-to-end with 4 lines of code. In the example shown, here below, we use TSDataLoaders and the multivariate NATOPS dataset.</p>
 
 </div>
 </div>
@@ -281,9 +281,9 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
-<div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>The whole <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/training_using_default_settings.ipynb">training_using_default_settings.ipynb</a> notebook can be run in Google Colab by clicking on the link.
+<div class="flash flash-success">
+    <svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <strong>Tip: </strong>The whole <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/training_using_default_settings.ipynb">training_using_default_settings.ipynb</a> notebook can be run in Google Colab by clicking on the link.
 </div>
 
 </div>
@@ -337,9 +337,9 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p></p>
-<div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong>the <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/cam_tutorial_ECG200.ipynb">cam_tutorial_ECG200.ipynb</a> notebook can be run in Google Colab by clicking on the link.
+<div class="flash flash-success">
+    <svg class="octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist octicon octicon-checklist" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 8.5l-6 6-3-3L8.5 10l1.5 1.5L14.5 7 16 8.5zM5.7 12.2l.8.8H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h7c.55 0 1 .45 1 1v6.5l-.8-.8c-.39-.39-1.03-.39-1.42 0L5.7 10.8a.996.996 0 000 1.41v-.01zM4 4h5V3H4v1zm0 2h5V5H4v1zm0 2h3V7H4v1zM3 9H2v1h1V9zm0-2H2v1h1V7zm0-2H2v1h1V5zm0-2H2v1h1V3z"></path></svg>
+    <strong>Tip: </strong>the <a href="https://github.com/ai-fast-track/timeseries/blob/master/nbs/cam_tutorial_ECG200.ipynb">cam_tutorial_ECG200.ipynb</a> notebook can be run in Google Colab by clicking on the link.
 </div>
 
 </div>
@@ -370,10 +370,10 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 </ol>
 <ul>
 <li>
-<p>Create a 2 Dataset objects containing a train dataset, and a valid dataset.</p>
+<p>Creating a 2 Dataset objects containing a train dataset, and a valid dataset.</p>
 </li>
 <li>
-<p>Create 2 DataLoader objects that allows us to create mini-batches for both training and valid datasets.</p>
+<p>Creating 2 DataLoader objects that allows us to create mini-batches for both training and valid datasets.</p>
 </li>
 </ul>
 <ol>
@@ -404,12 +404,12 @@ Similarly, to fastai vision examples, we can train any time series dataset end-t
 <a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
 </h2>
 <p>I hope this first article convey you into trying the timeseries package. You might also check out its <a href="https://ai-fast-track.github.io/timeseries/">documentation</a>. All the notebooks are self-contained, and documented. You will be able to directly run them in Google Colab.</p>
-<p>If you give it a try and found it interesting/helpful, please let others know it by staring it on GitHub, and share with your friends and colleagues who might be interested in this topic.</p>
+<p>If you give it a try and found it interesting/helpful, please let others know it by staring it on GitHub, and share it with your friends and colleagues who might be interested in this topic.</p>
 <p>As a new Twitter user, I would like to kindly ask you to follow me @ai_fast_track. I will post there the sequel of this blog post.</p>
 <p>I also intend to post on Twitter, on regular basis, Tips &amp; Tricks about fastai(2) and Deep Learning in general. Stay Tuned, and Stay Safe!
 </p>
 <div class="flash">
-    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
+    <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
     <strong>Note: </strong>I wanted to end this article by saying that I was immune to "unfollowers" because I haven’t any follower yet. To my big surprise, I discovered that I already had one follower: @jcatanz, before even starting tweeting. Thank you so much Joseph for being my first follower! Hopefully, other fastai members will do the same!
 </div>
 
