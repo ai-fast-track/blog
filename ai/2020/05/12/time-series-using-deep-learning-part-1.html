@@ -195,9 +195,9 @@ window.onload = wrap_img;
 <a class="anchor" href="#Time-Series-Short-Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Time Series Short Introduction<a class="anchor-link" href="#Time-Series-Short-Introduction"> </a>
 </h2>
 <p>A time series is a simple set of data point stored in a chronological order (time stamps). Time series can be found in virtually all domains and can be divided into 2 types:</p>
-<p>•   Univariate time series: Representing a single wave (e.g. ECG recording)</p>
+<p>•   Univariate time series: Representing a single wave. The example, here below, shows an ECG recording extracted from the <a href="http://www.timeseriesclassification.com/description.php?Dataset=ECG200">ECG200</a> dataset. An analysis using that dataset is shown in the <strong>End-to-End Training</strong> section.</p>
 <p><img src="/blog/images/copied_from_nb/images/ECG.png" alt=""></p>
-<p>•   Multivariate time series: Representing a set of related waves such as NATOPS recording which represent sensors recordings at different location (see here below for more details)</p>
+<p>•   Multivariate time series: Representing a set of related waves such as <a href="http://www.timeseriesclassification.com/description.php?Dataset=NATOPS">NATOPS</a> recording which represent sensors recordings at different locations: hands, elbows, wrists and thumbs. For more details, check out the <strong>Toy Data</strong> section here below.</p>
 <p><img src="/blog/images/copied_from_nb/images/NATOPS-24-Channels.png" alt=""></p>
 <p><img src="/blog/images/copied_from_nb/images/NATOPS.jpg" alt=""></p>
 
@@ -228,7 +228,7 @@ window.onload = wrap_img;
 <p></p>
 <div class="flash">
     <svg class="octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info octicon octicon-info" viewbox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 01-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 01-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg>
-    <strong>Note: </strong><strong>AIoT and AI in Edgepoint</strong><br><br>Many big companies and startups are heavily investing in developing both AI-enabled processors and micro-controllers for AI in edgepoint Applications.<br><br>Nowadays, the edge AI portion of a smartphone System-on-Chip (SoC) represents only about 5% of the total area and about US$3.50 of the total cost, and would use about 95% less power than the whole SoC does. This stressed out how affordable the AI chips already are.<br><br>The wide spread of both AI chips and artificial intelligence of things (AIoT) will make NN model training and/or inference at edgepoints a reality. AI inference on the edgepoint device is very attractive because it increases latency, saves bandwidth, helps privacy, and saves power associated with RF transmission of data to the cloud.<br><br>Furthermore, the ability to collect, interpret, and immediately act on vast amounts of data is critical for many of the data-heavy applications.<br><br>As a consequence, this will likely drive significant changes for consumers and enterprises applications. Smart machines powered by AI chips will have a huge impact on a wide variety of industries such as manufacturing, logistics, agriculture, energy, etc.<br><br>TS processing using AI/DL techniques could play a key role in implementing AI on edgepoint given the fact that TS uses far less resources such as memory and compute than both CV and NLP counterparts.
+    <strong>Note: </strong><strong>AIoT and AI in Edgepoint</strong><br><br>Many big companies and startups are heavily investing in developing both AI-enabled processors and micro-controllers for AI in edgepoint Applications.<br><br>Nowadays, the edge AI portion of a smartphone System-on-Chip (SoC) represents only about 5% of the total area and about US$3.50 of the total cost, and would use about 95% less power than the whole SoC does. This stressed out how affordable the AI chips already are.<br><br>The wide spread of both AI chips and artificial intelligence of things (AIoT) will make NN model training and/or inference at edgepoints a reality. AI inference on the edgepoint device is very attractive because it decreases latency, saves bandwidth, helps privacy, and saves power associated with RF transmission of data to the cloud.<br><br>Furthermore, the ability to collect, interpret, and immediately act on vast amounts of data is critical for many of the data-heavy applications.<br><br>As a consequence, this will likely drive significant changes for consumers and enterprises applications. Smart machines powered by AI chips will have a huge impact on a wide variety of industries such as manufacturing, logistics, agriculture, energy, etc.<br><br>TS processing using AI/DL techniques could play a key role in implementing AI in edgepoint given the fact that TS uses far less resources such as memory and compute than both CV and NLP counterparts.
 </div>
 
 </div>
@@ -245,7 +245,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Classes-(Labels)" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes (Labels)<a class="anchor-link" href="#Classes-(Labels)"> </a>
 </h3>
 <p>The dataset contains six classes representing 6 separate actions, with the following meaning:
-1: I have command 2: All clear 3: Not clear 4: Spread wings 5: Fold wings 6: Lock wings</p>
+<strong>1:</strong> I have command <strong>2:</strong> All clear <strong>3:</strong> Not clear <strong>4:</strong> Spread wings <strong>5:</strong> Fold wings <strong>6:</strong> Lock wings</p>
 
 </div>
 </div>
@@ -362,12 +362,11 @@ Conv2D       &lt;---&gt; Conv1D</p>
 <p>let’s decipher, line by line, the 4 lines of code shown here above:</p>
 <ol>
 <li>
-<p>In line 1, we are downloading a dataset (NATOPS dataset precisely) that is hosted at the <a href="http://www.timeseriesclassification.com/">Time Series Classification Repository website</a>, unzipping the dataset, and saving it a separate folder under the local ./fastai/data folder.</p>
+<p><strong>Line 1: Downloading Data</strong></p>
+<p>Downloading a dataset (NATOPS dataset precisely) hosted at the <a href="http://www.timeseriesclassification.com/">Time Series Classification Repository website</a>, unzipping the dataset, and saving it a separate folder under the local ./fastai/data folder.</p>
 </li>
 <li>
-<p>In line 2, a lot of action is occurring there, and can be summarized as follow:</p>
-</li>
-</ol>
+<p><strong>Line 2: Creating Datasets and DataLoaders Objects</strong></p>
 <ul>
 <li>
 <p>Creating a 2 Dataset objects containing a train dataset, and a valid dataset.</p>
@@ -376,9 +375,10 @@ Conv2D       &lt;---&gt; Conv1D</p>
 <p>Creating 2 DataLoader objects that allows us to create mini-batches for both training and valid datasets.</p>
 </li>
 </ul>
-<ol>
-<li>In line 3, we create a learner where we basically do the following:</li>
-</ol>
+</li>
+<li>
+<p><strong>Line 3: Creating a Learner Object</strong></p>
+<p>We create a learner where we basically do the following:</p>
 <ul>
 <li>
 <p>Create an NN model, InceptionTime in our case.</p>
@@ -387,10 +387,13 @@ Conv2D       &lt;---&gt; Conv1D</p>
 <p>Create a Learner object using some state-of-the-art techniques found in the fastai2 library such as the Ranger optimizer, callbacks, etc.</p>
 </li>
 </ul>
-<ol>
-<li>At line 4, we train our model using one the fastai secret ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs.</li>
+</li>
+<li>
+<p><strong>Line 4: Training Model</strong></p>
+<p>We train our model using one the fastai magic ingredient being the fast converging training algorithm called fit_one_cycle(). Running the last line, we achieve accuracy higher than 98% in less than 20 epochs.</p>
+</li>
 </ol>
-<p>Admittedly, the 4 lines shown here above can be a bit cryptic for someone how is new to the fastai2 library. Those lines show how to train a model using the fastai2 high level API. At that level, many settings are set by default in order to avoid overwhelming new users by exposing too many parameters that are difficult to grasp at the beginning of their learning journey. As shown above, using fastai2 default settings we are very often capable of reaching SOTA results in fewer epochs.</p>
+<p>Admittedly, the 4 lines shown here above can be a bit cryptic for someone how is new to the fastai2 library. Those lines show how to train a model using the fastai2 high level API. At that level, many settings are set by default in order to avoid overwhelming new users by exposing too many parameters that are difficult to grasp at the beginning of their learning journey. As shown here above, using fastai2 default settings we are very often capable of reaching SOTA results in fewer epochs.</p>
 <p>As a very versatile API covering a large range of use-cases, fastai2 offers 3 levels of APIs: High level, Mid Level, and Low Level. Depending on both use-cases and user's fastai2 proficiency, one might choose one or the other level.</p>
 <p>In the next article, I will take that opportunity to start building the timeseries module using the Mid Level APIs. I chose that level because both fastai version 1 and/or Pytorch users will feel in familiar territories. We will leverage the new fastai2 Datasets and DataLoaders classes, and show how both versatile and powerful are.</p>
 
